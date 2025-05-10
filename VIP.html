@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PutraStore Hosting - Maincraft</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+       .navbar {
+      display: flex;
+      justify-content: center;
+      background: transparent;
+      padding: 15px 0;
+    }
+    /* Navbar Links */
+    .navbar a {
+      position: relative;
+      margin: 0 20px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+    /* RGB Gradient Border Animation */
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+      background-size: 300%;
+      border-radius: 5px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .navbar a:hover::after {
+      transform: scaleX(1);
+      animation: rgbMove 1s linear infinite;
+    }
+    @keyframes rgbMove {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 100%;
+      }
+    }
+    .navbar a:hover {
+      color: #00ffff;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar a {
+        margin: 10px 0;
+      }
+    }
+  .neon-button {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 18px;
+      padding: 14px 32px;
+      color: #fff;
+      background: transparent;
+      border: 2px solid #ff4de6;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      z-index: 1;
+      overflow: hidden;
+      transition: color 0.3s ease;
+    }
+
+    .neon-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff4de6, #4ddcff);
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      opacity: 0.3;
+      filter: blur(10px);
+    }
+
+    .neon-button:hover {
+      color: #000;
+    }
+
+    .neon-button:hover::before {
+      opacity: 1;
+      filter: blur(20px);
+    }
+    body {
+      background-image: url("img.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      color: #fff;
+      min-height: 100vh;
+    }
+    header {
+      background-color: rgba(0,0,0,0.2);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 24px;
+      color: #fff;
+    }
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .btn {
+      color: #ff416c;
+      border: 2px solid #ff416c;
+      background: transparent;
+      padding: 14px 28px;
+      font-size: 18px;
+      text-transform: uppercase;
+      border-radius: 10px;
+      cursor: pointer;
+      text-shadow: 0 0 5px #ff416c;
+      box-shadow:
+        0 0 5px #ff416c,
+        0 0 10px #ff416c,
+        0 0 20px #ff416c,
+        0 0 40px #ff416c;
+      transition: 0.3s ease;
+    }
+    .btn:hover {
+      background: #ff416c;
+      color: #fff;
+      box-shadow:
+        0 0 10px #ff416c,
+        0 0 20px #ff416c,
+        0 0 40px #ff416c,
+        0 0 80px #ff416c;
+    }
+    .packages {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+    }
+    .card {
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      width: 280px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255,255,255,0.08);
+    }
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .card .price {
+      font-size: 20px;
+      color: #ffb347;
+      margin-bottom: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.2);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>PutraStore Hosting</h1>
+  <div class="navbar">
+    <a href="#">Java</a>
+    <a href="#">Bedrock</a>
+    <a href="#">Sudominan</a>
+  </div>
+  </header>
+
+<section class="hero">
+  <h2>Hosting Maincraft Murah</h2>
+  <p>Pilih Paket Hosting Di Bawah</p>
+  <button class="neon-button">↓Lihat Paket Basic↓</button>
+</section>
+
+  <section class="packages">
+    <div class="card">
+      <h3>PAKET BASIC 1</h3>
+      <p>CPU: 200%</p>
+      <p>RAM: 2GB</p>
+      <p>DISK: 3GB</p>
+      <div class="price">Rp 10.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 1 = CPU: 200% RAM: 2GB DISK: 3GB')">Pesan</button>
+
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 2</h3>
+      <p>CPU: 300%</p>
+      <p>RAM: 3GB</p>
+      <p>DISK: 4GB</p>
+      <div class="price">Rp 15.000/bulan</div>
+     <button class="neon-button" onclick="orderViaWA('PAKET BASIC 2 = CPU: 300% RAM: 3GB DISK: 4GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 3</h3>
+      <p>CPU: 400%</p>
+      <p>RAM: 4GB</p>
+      <p>DISK: 5GB</p>
+      <div class="price">Rp 20.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 3 = CPU: 400% RAM: 4GB DISK: 5GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 4</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 5GB</p>
+      <p>DISK: 6GB</p>
+      <div class="price">Rp 25.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 4 = CPU: 500% RAM: 5GB DISK: 6GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 5</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 6GB</p>
+      <p>DISK: 7GB</p>
+      <div class="price">Rp 30.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 5 = CPU: 500% RAM: 6GB DISK: 7GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 6</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 7GB</p>
+      <p>DISK: 8GB</p>
+      <div class="price">Rp 35.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 6 = CPU: 500% RAM: 7GB DISK: 8GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 7</h3>
+      <p>CPU: t00%</p>
+      <p>RAM: 8GB</p>
+      <p>DISK: 9GB</p>
+      <div class="price">Rp 40.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 7 = CPU: 500% RAM: 8GB DISK: 9GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 8</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 9GB</p>
+      <p>DISK: 10GB</p>
+      <div class="price">Rp 45.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 8 = CPU: 500% RAM: 9GB DISK: 10GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET BASIC 9</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 10GB</p>
+      <p>DISK: 11GB</p>
+      <div class="price">Rp 50.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET BASIC 9 = CPU: 500% RAM: 10GB DISK: 11GB')">Pesan</button>
+    </div>
+  </section>
+
+<section class="hero">
+  <button class="neon-button">↓Lihat Paket Premium↓</button>
+</section>
+
+  <section class="packages">
+    <div class="card">
+      <h3>PAKET PREMIUM 1</h3>
+      <p>CPU: 200%</p>
+      <p>RAM: 2GB</p>
+      <p>DISK: 3GB</p>
+      <div class="price">Rp 20.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 1 = CPU: 200% RAM: 2GB DISK: 3GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIUM 2</h3>
+      <p>CPU: 300%</p>
+      <p>RAM: 3GB</p>
+      <p>DISK: 4GB</p>
+      <div class="price">Rp 30.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 2 = CPU: 300% RAM: 3GB DISK: 4GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIUM 3</h3>
+      <p>CPU: 400%</p>
+      <p>RAM: 4GB</p>
+      <p>DISK: 5GB</p>
+      <div class="price">Rp 40.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 3 = CPU: 400% RAM: 4GB DISK: 5GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIUM 4</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 5GB</p>
+      <p>DISK: 6GB</p>
+      <div class="price">Rp 50.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 4 = CPU: 500% RAM: 5GB DISK: 6GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIUM 5</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 6GB</p>
+      <p>DISK: 7GB</p>
+      <div class="price">Rp 50.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 5 = CPU: 500% RAM: 6GB DISK: 7GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIU 6</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 7GB</p>
+      <p>DISK: 8GB</p>
+      <div class="price">Rp 60.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 6 = CPU: 500% RAM: 7GB DISK: 8GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIUM 7</h3>
+      <p>CPU: t00%</p>
+      <p>RAM: 8GB</p>
+      <p>DISK: 9GB</p>
+      <div class="price">Rp 70.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 7 = CPU: 500% RAM: 8GB DISK: 9GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIUM 8</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 9GB</p>
+      <p>DISK: 10GB</p>
+      <div class="price">Rp 70.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 8 = CPU: 500% RAM: 9GB DISK: 10GB')">Pesan</button>
+    </div>
+    <div class="card">
+      <h3>PAKET PREMIUM 9</h3>
+      <p>CPU: 500%</p>
+      <p>RAM: 10GB</p>
+      <p>DISK: 11GB</p>
+      <div class="price">Rp 80.000/bulan</div>
+      <button class="neon-button" onclick="orderViaWA('PAKET PREMIUM 9 = CPU: 500% RAM: 10GB DISK: 11GB')">Pesan</button>
+    </div>
+  </section>
+  
+  <script>
+  function orderViaWA(paket) {
+    const nomor = "6287849798520"; // Ganti dengan nomor WhatsApp kamu
+    const pesan = `Halo Admin, saya ingin pesan hosting Maincraft:\nPaket: ${paket}`;
+    const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+  <footer>
+    &copy; 2025 PutraStore Hosting - All rights reserved
+  </footer>
+
+</body>
+</html>
